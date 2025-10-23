@@ -11,7 +11,6 @@ resource "digitalocean_vpc_nat_gateway" "main" {
   region = var.region
   size =  var.nat_gateway_size
   vpcs {
-    default_gateway = true
     vpc_uuid = digitalocean_vpc.main.id
   }
 }
