@@ -14,11 +14,6 @@ variable "region" {
   type = string
 }
 
-variable "project_id" {
-  description = "Project ID where the VPC will be assigned"
-  type = string
-}
-
 variable "nat_gateway" {
   description = "Assign a NAT Gateway for the VPC"
   type = bool

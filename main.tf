@@ -15,11 +15,3 @@ resource "digitalocean_vpc_nat_gateway" "main" {
     vpc_uuid = digitalocean_vpc.main.id
   }
 }
-
-# Create project resources association if project_id is provided
-resource "digitalocean_project_resources" "main" {
-  count = var.project_id != null ? 1 : 0
-
-  project   = var.project_id
-  resources = [digitalocean_vpc.main.urn]
-}
