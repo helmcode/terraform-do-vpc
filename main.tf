@@ -21,5 +21,12 @@ resource "digitalocean_project_resources" "main" {
   count = var.project_id != null ? 1 : 0
 
   project   = var.project_id
-  resources = concat([digitalocean_vpc.main.urn], var.nat_gateway ? [digitalocean_vpc_nat_gateway.main[0].urn] : [])
+  resources = [digitalocean_vpc.main.urn]
+}
+
+resource "digitalocean_project_resources" "main_nat_gateway" {
+  count = var.project_id != null && var.nat_gateway ? 1 : 0
+
+  project   = var.project_id
+  resources = [digitalocean_vpc_nat_gateway.main[0].urn]
 }
